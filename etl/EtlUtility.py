@@ -10,7 +10,7 @@ def SqlExecCode(etl_op,exec_namespace):
     exec("adddate = lambda x,y:time.strftime('%Y%m%d',time.gmtime(int(time.mktime(time.strptime(x,'%Y%m%d'))) + y*24*3600 + 8*3600))") in exec_namespace
     exec("subdate = lambda x,y:time.strftime('%Y%m%d',time.gmtime(int(time.mktime(time.strptime(x,'%Y%m%d'))) - y*24*3600 + 8*3600))") in exec_namespace
     exec("getyear = lambda x:x[:4]") in exec_namespace
-    exec("getmonth = lambda x:x[:4]") in exec_namespace
+    exec("getmonth = lambda x:x[4:6]") in exec_namespace
     exec("lastmonth = lambda x:time.strftime('%m',time.gmtime(int(time.mktime(time.strptime(x,'%Y%m%d'))) - int(x[6:8])*24*3600 + 8*3600))")  in exec_namespace
     exec("lastmonthday = lambda x,y:time.strftime('%Y%m',time.gmtime(int(time.mktime(time.strptime(x,'%Y%m%d'))) - int(x[6:8])*24*3600 + 8*3600)) + '%02d' % y")  in exec_namespace
     exec("curweek = lambda x,y:subdate(x,calendar.weekday(int(x[:4]),int(x[4:6]),int(x[6:])) - y)") in exec_namespace
