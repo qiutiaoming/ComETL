@@ -61,6 +61,7 @@ InfobLoadCmd = 'mysql -h%(host)s -P%(port)d -u%(user)s -p%(passwd)s %(db)s --loc
 LoadSqlBase = "load data local infile \'%s\' replace into table %s FIELDS TERMINATED BY \',\' (%s)"
 re_loaderror = re.compile("Row: \d+")
 
+
 def SimpleOutput(src_db,out_file,args,logger):
     commands.getstatusoutput("mkdir -p %s" % os.path.split(out_file)[0])
     tmp_outfile = open(out_file,'w')
@@ -112,7 +113,7 @@ def UpdateLoad(dest_db,datafile,args,logger):
         for k,v in update_where_field_map.items():
             where_sql.append('%s="%s"' % (k,frags[v]))
             
-        sql = sqlbase % (args['db_table'],','.join(str(x) for x in data_sql),','.join(str(x) for x in where_sql))
+        sql = sqlbase % (args['db_table'],','.join(str(x) for x in data_sql),' and '.join(str(x) for x in where_sql))
         res = dest_db.execute(sql)
         if not res:
             logger("[%s] update failed" % sql,'error')
