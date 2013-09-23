@@ -1,6 +1,7 @@
 You can find ComETL document from here
 ComEtl2.0 Usage : https://github.com/zhuyeqing/ComETL/wiki/ComETL-usage-docs
----
+------
 连接不上数据库：
 netstat -nap | grep 10000
+kill -9 进程
 hive --service hiveserver &
