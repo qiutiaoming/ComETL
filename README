@@ -5,3 +5,5 @@ ComEtl2.0 Usage : https://github.com/zhuyeqing/ComETL/wiki/ComETL-usage-docs
 netstat -nap | grep 10000
 kill -9 进程
 hive --service hiveserver &
+修改日期：2013.10.27
+
